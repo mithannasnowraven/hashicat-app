@@ -7,12 +7,6 @@ terraform {
   }
 }
 
-module "backupstorage" {
-  source  = "app.terraform.io/mithanna/azure-backup/azurerm"
-  version = "1.0.2"
-  resource_group_name = "${var.prefix}-private"
-}
-
 provider "azurerm" {
   features {
     resource_group {
@@ -208,4 +202,8 @@ resource "null_resource" "configure-cat-app" {
   }
 }
 
-
+module "backupstorage" {
+  source  = "app.terraform.io/mithanna/azure-backup/azurerm"
+  version = "1.0.2"
+  resource_group_name = "${var.prefix}-private"
+}
